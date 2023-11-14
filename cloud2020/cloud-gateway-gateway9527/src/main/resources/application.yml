@@ -5,9 +5,9 @@ spring:
     name: cloud-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true # 开启从服务在注册中心动态创建路由的功能
+#      discovery:
+#        locator:
+#          enabled: true # 开启从服务在注册中心动态创建路由的功能
       routes: # 可以配置多个路由
         - id: payment_routh # 路由id，没有固定规则但要求唯一
 #          uri:  http://localhost:8001 # 匹配后提供服务的路由地址
@@ -22,12 +22,16 @@ spring:
           uri:  lb://cloud-payment-service
           predicates:
             - Path=/payment/create # 路径相匹配的进行路由
+        - id: water
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/s/**
 
-eureka:
-  instance:
-    hostname: cloud-gateway-service
-  client:
-    service-url:
-       register-with-eureka:  true
-       fetch-registry:  true
-       defaultZone: http://eureka7001.com:7001/eureka
+#eureka:
+#  instance:
+#    hostname: cloud-gateway-service
+#  client:
+#    service-url:
+#       register-with-eureka:  true
+#       fetch-registry:  true
+#       defaultZone: http://eureka7001.com:7001/eureka

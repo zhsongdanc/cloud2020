@@ -6,7 +6,7 @@ spring:
     name: nacos-payment-provider
   cloud:
     nacos:
-      server-addr: 192.168.150.66:1111 # Nacos地址
+      server-addr: 127.0.0.1:8848 # Nacos地址
 
 management:
   endpoints:
